@@ -2,7 +2,7 @@
   <div class="container-fluid justify-content-center">
     <a class="navbar-brand me-5" href="/">
       <img src="laravel.svg" alt="Laravel Logo" width="30" height="30" class="d-inline-block align-text-top">
-      Laravel
+      {{ $title ?? 'Laravel' }}
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
