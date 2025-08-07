@@ -9,7 +9,9 @@
     </a>
 
     @auth
-    <x-userMenu class="d-lg-none ms-auto me-1" name="{{ auth()->user()->name }}" />
+    <x-userMenu class="d-lg-none ms-auto me-1" name="{{ ucfirst(Auth::user()->name) }}" />
+    @else
+    <x-visitorMenu class="d-lg-none ms-auto me-2" />
     @endauth
 
 
@@ -28,13 +30,12 @@
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
-            </li>
         </ul>
     </div>
     @auth
-    <x-userMenu class="d-none d-lg-flex" name="{{ auth()->user()->name }}" />
+    <x-userMenu class="d-none d-lg-flex" name="{{ ucfirst(Auth::user()->name) }}" />
+    @else
+    <x-visitorMenu class="d-none d-lg-flex me-1" />
     @endauth
 
-</nav>
+</nav>  

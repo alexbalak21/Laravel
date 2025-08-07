@@ -1,0 +1,20 @@
+<x-layout title="Login">
+    <main class="col-lg-6 mx-auto col-12">
+        <h1 class="text-center">Login</h1>
+        @if ($errors->any())
+            <p class="text-danger text-center fs-5">{{ $errors->first() }}</p>
+        @endif
+        <form action="/login" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </main>
+    </x-layout>

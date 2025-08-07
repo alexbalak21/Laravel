@@ -3,11 +3,14 @@
          type="button"
          data-bs-toggle="dropdown"
          aria-expanded="false">
-         {{ $name }}
+         <i class="fa-solid fa-user me-1"></i> {{ $name }}
      </button>
      <ul class="dropdown-menu dropdown-menu-end">
-         <li><a class="dropdown-item" href="user.php">Modify User</a></li>
-         <li><a class="dropdown-item" href="createProduct.php">Create Product</a></li>
-         <li><a class="dropdown-item" href="login.php">Disconnect</a></li>
+         <li><a class="dropdown-item" href="/profile">Modify Account</a></li>
+         {{-- POST logout --}}
+         <li><form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="dropdown-item">Disconnect</button>
+        </form></li>
      </ul>
  </div>

@@ -1,16 +1,11 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+// Main route
 Route::get('/', function () {
     return view('home');
 });
 
-
-//Register Route
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::post('/register', [UserController::class, 'register']);
+// Include user-related routes
+require __DIR__ . '/userRoutes.php';
