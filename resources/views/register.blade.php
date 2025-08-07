@@ -1,15 +1,17 @@
 <x-layout title="Register">
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul class="mb-0">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
-    <form action="/register" method="POST">
+    <h1 class="text-center mt-4">Register</h1>
+    <form class="col-lg-6 mx-auto col-12" action="/register" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -32,6 +34,6 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-success">Register <i class="fa-solid fa-user-plus ms-1"></i></button>
     </form>
 </x-layout>

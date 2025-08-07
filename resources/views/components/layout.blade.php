@@ -14,7 +14,7 @@
     <header>
         <x-navbar title="{{ $title ?? 'Laravel' }}"></x-navbar>
     </header>
-    <main class="container">
+    <main class="container mt-3">
         {{ $slot }}
     </main>
 </body>

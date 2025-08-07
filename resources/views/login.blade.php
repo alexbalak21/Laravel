@@ -1,5 +1,5 @@
 <x-layout title="Login">
-    <main class="col-lg-6 mx-auto col-12">
+    <div class="col-lg-6 mx-auto col-12 mt-4">
         <h1 class="text-center">Login</h1>
         @if ($errors->any())
             <p class="text-danger text-center fs-5">{{ $errors->first() }}</p>
@@ -14,7 +14,9 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Login <i class="fa-regular fa-circle-right ms-1"></i></button>
+            </div>
         </form>
-    </main>
+    </div>
     </x-layout>
