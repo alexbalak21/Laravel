@@ -8,9 +8,12 @@
         {{ $title ?? 'Laravel' }}
     </a>
 
-    <x-userMenu />
+    @auth
+    <x-userMenu class="d-lg-none ms-auto me-1" name="{{ auth()->user()->name }}" />
+    @endauth
 
-    <button class="navbar-toggler ms-1"
+
+    <button class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNav"
@@ -21,7 +24,7 @@
     </button>
 
     <div class="collapse navbar-collapse text-center" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mx-auto">
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
             </li>
@@ -30,5 +33,8 @@
             </li>
         </ul>
     </div>
+    @auth
+    <x-userMenu class="d-none d-lg-flex" name="{{ auth()->user()->name }}" />
+    @endauth
 
 </nav>
