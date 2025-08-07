@@ -19,3 +19,8 @@ Route::get('/login', function () {
 });
 
 Route::post('/login', [UserController::class, 'login']);
+
+//Profile Route
+Route::get('/profile', function () {
+    return view('profile');
+});
