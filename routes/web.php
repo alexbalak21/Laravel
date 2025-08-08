@@ -9,3 +9,6 @@ Route::get('/', function () {
 
 // Include user-related routes
 require __DIR__ . '/userRoutes.php';
+
+// Include post-related routes
+require __DIR__ . '/postRoutes.php';

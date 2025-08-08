@@ -1,3 +1,7 @@
+@php
+use App\Http\Controllers\PostController;
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light mx-2">
     <a class="navbar-brand me-5" href="/">
         <img src="laravel.svg"
@@ -30,6 +34,14 @@
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
             </li>
+            @auth
+            <li class="nav-item">
+                <a class="nav-link" href="/posts/new">New Post</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/posts">Posts</a>
+            </li>
+            @endauth
         </ul>
     </div>
     @auth

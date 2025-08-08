@@ -1,6 +1,6 @@
 <x-layout title="New Post">
     <h1 class="text-center">New Post</h1>
-    <form action="/new_post" method="POST">
+    <form action="{{ route('posts.create') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
