@@ -23,15 +23,24 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        $incomingFields = $request->validate([
-            'email' => 'required|email',
+        $request->validate([
+            'login' => 'required',
             'password' => 'required|min:6|max:50',
         ]);
-        if (Auth::attempt($incomingFields)) {
+
+        $loginType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+
+        $credentials = [
+            $loginType => $request->login,
+            'password' => $request->password
+        ];
+
+        if (Auth::attempt($credentials)) {
             return redirect('/');
         }
+
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'login' => 'The provided credentials do not match our records.',
         ]);
     }
 
@@ -41,5 +50,20 @@ class UserController extends Controller
         $request->session()->invalidate(); // Clears session data
         $request->session()->regenerateToken(); // Generates a fresh CSRF token
         return view('logout');
+    }
+    public function update_profile(Request $request)
+    {
+        $user = Auth::user();
+        if ($user == null) return redirect('/login');
+        $request->validate([
+            'name' => 'required|max:50|unique:users,name,' . Auth::user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+        ]);
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        return redirect('/profile')->with('success', 'Profile updated successfully');
     }
 }

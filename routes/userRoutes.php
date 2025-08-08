@@ -24,3 +24,6 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/profile', function () {
     return view('profile');
 });
+
+// Update Profile name & email Route
+Route::put('/user/update_profile', [UserController::class, 'update_profile'])->name('profile.update');
