@@ -66,4 +66,27 @@ class UserController extends Controller
         $user->save();
         return redirect('/profile')->with('success', 'Profile updated successfully');
     }
+
+    public function update_password(Request $request)
+    {
+        $user = Auth::user();
+        if ($user == null) return redirect('/login');
+        
+        if (!password_verify($request->password, $user->password)) {
+            return back()->with('error', 'Current password is incorrect');
+        }
+        
+        if ($request->new_password !== $request->confirm_new_password) {
+            return back()->with('error', 'New passwords do not match');
+        }
+        
+        $request->validate([
+            'password' => 'required',
+            'new_password' => 'required|min:6|max:50',
+        ]);
+
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+        return redirect('/profile')->with('success', 'Password updated successfully');
+    }
 }

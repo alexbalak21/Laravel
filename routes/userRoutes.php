@@ -27,3 +27,6 @@ Route::get('/profile', function () {
 
 // Update Profile name & email Route
 Route::put('/user/update_profile', [UserController::class, 'update_profile'])->name('profile.update');
+
+//Update password Route
+Route::put('/user/update_password', [UserController::class, 'update_password'])->name('password.update');
