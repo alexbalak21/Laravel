@@ -57,7 +57,7 @@
                 <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
             </div>
             <div class="text-center mt-4">
-                <button type="submit" id="update_password" class="btn btn-primary">Update <i class="fa-solid fa-key ms-1"></i></button>
+                <button type="submit" id="update_password" class="btn btn-success">Update <i class="fa-solid fa-key ms-1"></i></button>
             </div>
         </form>
         <div class="text-center mt-5">
