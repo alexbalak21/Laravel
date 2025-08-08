@@ -4,7 +4,7 @@ use App\Http\Controllers\PostController;
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mx-2">
     <a class="navbar-brand me-5" href="/">
-        <img src="laravel.svg"
+        <img src="{{ asset('laravel.svg') }}"
             alt="Laravel Logo"
             width="30"
             height="30"
@@ -38,10 +38,13 @@ use App\Http\Controllers\PostController;
             <li class="nav-item">
                 <a class="nav-link" href="/posts/new">New Post</a>
             </li>
-            <li>
-                <a class="nav-link" href="/posts">Posts</a>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts/my">My Posts</a>
             </li>
             @endauth
+            <li class="nav-item">
+                <a class="nav-link" href="/posts">Posts</a>
+            </li>
         </ul>
     </div>
     @auth

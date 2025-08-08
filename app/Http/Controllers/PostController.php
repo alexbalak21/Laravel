@@ -35,4 +35,30 @@ class PostController extends Controller
         }
         return view('new_post');
     }
+
+    public function myPosts()
+    {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+        $posts = Post::where('user_id', Auth::user()->id)->get();
+        return view('userPosts', compact('posts'));
+    }
+
+    public function show(Post $post)
+    {
+        return view('postDetails', compact('post'));
+    }
+
+    public function destroy(Post $post)
+    {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+        if (Auth::user()->id !== $post->user_id) {
+            return redirect('/posts');
+        }
+        $post->delete($post->id);
+        return redirect('/posts');
+    }
 }

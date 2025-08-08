@@ -22,15 +22,6 @@ class Post extends Model
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'updated_on' => 'datetime',
-    ];
-
-    /**
      * Get the user that owns the post.
      */
     public function user(): BelongsTo
