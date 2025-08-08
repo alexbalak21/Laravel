@@ -41,8 +41,9 @@ class PostController extends Controller
         if (!Auth::check()) {
             return redirect('/login');
         }
-        $posts = Post::where('user_id', Auth::user()->id)->get();
-        return view('userPosts', compact('posts'));
+        $user_id = Auth::user()->id;
+        $posts = Post::where('user_id', $user_id)->get();
+        return view('posts', compact('posts', 'user_id'));
     }
 
     public function show(Post $post)
@@ -59,6 +60,33 @@ class PostController extends Controller
             return redirect('/posts');
         }
         $post->delete($post->id);
-        return redirect('/posts');
+        return redirect('/posts')->with('success', 'Post deleted successfully');
+    }
+
+    public function edit(Post $post)
+    {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+        if (Auth::user()->id !== $post->user_id) {
+            return redirect('/posts');
+        }
+        return view('edit_post', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+        if (Auth::user()->id !== $post->user_id) {
+            return redirect('/posts');
+        }
+        $incomingFields = $request->validate([
+            'title' => 'required|max:255|unique:posts,title',
+            'content' => 'required',
+        ]);
+        $post->update($incomingFields);
+        return redirect('/posts')->with('success', 'Post updated successfully');
     }
 }

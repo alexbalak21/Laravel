@@ -10,4 +10,6 @@ Route::prefix('posts')->group(function () {
     Route::get('/my', [PostController::class, 'myPosts'])->name('posts.my');
     Route::get('/{post}', [PostController::class, 'show'])->name('posts.show');
     Route::delete('/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/edit/{post}', [PostController::class, 'edit'])->name('posts.edit');
+    Route::put('/{post}', [PostController::class, 'update'])->name('posts.update');
 });

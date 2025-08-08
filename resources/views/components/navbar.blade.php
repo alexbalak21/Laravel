@@ -38,9 +38,6 @@ use App\Http\Controllers\PostController;
             <li class="nav-item">
                 <a class="nav-link" href="/posts/new">New Post</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/posts/my">My Posts</a>
-            </li>
             @endauth
             <li class="nav-item">
                 <a class="nav-link" href="/posts">Posts</a>
