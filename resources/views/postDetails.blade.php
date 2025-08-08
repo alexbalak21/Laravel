@@ -14,7 +14,7 @@
                                     {{ strtoupper(substr($post->user->name, 0, 1)) }}
                                 </div>
                                 <div class="ms-3">
-                                    <h6 class="mb-0">{{ ucfirst($post->user->name) }}</h6>
+                                    <h6 class="mb-0">{{ $post->user_id === Auth::id() ? 'Me' : ucfirst($post->user->name)}}</h6>
                                     <small class="text-muted">
                                         <i class="far fa-clock me-1"></i> 
                                         Last updated {{ $post->updated_at->diffForHumans() }}
